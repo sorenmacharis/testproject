@@ -4,11 +4,18 @@
 
 
 
+{% if error_message %}
+<div class="alert alert-danger" role="alert">
+    {{ error_message }}
+  </div>{% endif %}
+
+{% if votesuccess is None %}
+
 <form action="{% url 'polls:vote' question.id %}" method="post" class="text-center">
     {% csrf_token %}
     <fieldset>
-        <legend><h1>{{ question.question_text }}</h1></legend>
-        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <legend><h2>{{ question.question_text }}</h2></legend>
+        
         {% for choice in question.choice_set.all %}
         <div class="form-check">
             <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
@@ -18,5 +25,11 @@
     </fieldset>
     <input type="submit" class="btn btn-primary" value="Vote">
     </form>
-
+    {% else %}
+    <div class="alert alert-success" role="alert">
+        Your vote was submitted succesfully!
+      </div>
+      <p class="text-center"><a href="{% url 'polls:index' %}" class=" btn btn-primary">Go back to all polls</a></p>
+    {% endif%}
+    
     {% endblock %}

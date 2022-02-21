@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>{{ question.question_text }}</h1>
+<h2 class="text-center">{{ question.question_text }}</h2>
 <div class="text-center">
 <ul class="list-group">
 {% for choice in question.choice_set.all %}
@@ -10,6 +10,6 @@
 {% endfor %}
 </ul>
 
-<a href="{% url 'polls:detail' question.id %}" class=" btn btn-primary">Vote again?</a>
+<a href="{% url 'polls:index' %}" class=" btn btn-primary">Go back to all polls</a>
 </div>
 {% endblock %}

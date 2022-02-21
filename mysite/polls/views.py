@@ -37,5 +37,19 @@ def vote(request, question_id):
         selected_choice.votes += 1
         selected_choice.save()
         
-        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+        return render(request, 'polls/detail.html',{
+            'votesuccess': "success",
+        })
     return HttpResponse("You're voting on question %s." % question_id)
+
+def numberofpolls(request):
+    nq = Question.objects.count()
+    return HttpResponse("%s" % nq)
+
+def numberofvotes(request):
+    result = 0
+    cs = Choice.objects.all()
+    for c in cs :
+        result = result + c.votes
+    
+    return HttpResponse("%i" % result)
