@@ -12,8 +12,13 @@
         <div class="card-body">
           <h5 class="card-title">{{ question.question_text }}</h5>
           <p class="card-text">{{ question.question_description }}</p>
+          {% if user.is_authenticated %}
           <a href="{% url 'polls:detail' question.id %}" class="btn btn-primary">Go</a>
           <a href="{% url 'polls:results' question.id %}" class="btn btn-warning">Details</a>
+          
+          {% else %}
+          <a class="btn btn-primary" href="/accounts/login">Please login to take actions</a>
+          {% endif %}
         </div>
         
       </div>

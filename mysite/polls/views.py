@@ -53,3 +53,6 @@ def numberofvotes(request):
         result = result + c.votes
     
     return HttpResponse("%i" % result)
+
+def about(request):
+    return render(request, 'polls/about.html')

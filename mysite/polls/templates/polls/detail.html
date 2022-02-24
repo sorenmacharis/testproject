@@ -2,7 +2,7 @@
 
 {% block content %}
 
-
+{% if user.is_authenticated %}
 
 {% if error_message %}
 <div class="alert alert-danger" role="alert">
@@ -31,5 +31,9 @@
       </div>
       <p class="text-center"><a href="{% url 'polls:index' %}" class=" btn btn-primary">Go back to all polls</a></p>
     {% endif%}
+
+    {% else %}
+    <script> window.location.replace("/accounts/login"); </script>
+    {% endif %}
     
     {% endblock %}
