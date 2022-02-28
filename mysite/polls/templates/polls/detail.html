@@ -11,10 +11,12 @@
 
 {% if votesuccess is None %}
 
-<form action="{% url 'polls:vote' question.id %}" method="post" class="text-center">
+<form action="{% url 'polls:vote' question.id %}" method="post">
     {% csrf_token %}
+    <h2 class="text-center">{{ question.question_text }}</h2>
+    <div class="card w-25 mx-auto pb-3">
     <fieldset>
-        <legend><h2>{{ question.question_text }}</h2></legend>
+        <legend><h5  class="text-center">Make your choice:</h5></legend>
         
         {% for choice in question.choice_set.all %}
         <div class="form-check">
@@ -22,9 +24,12 @@
             <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
         </div>
         {% endfor %}
+        
     </fieldset>
-    <input type="submit" class="btn btn-primary" value="Vote">
+    <input type="submit" class="btn btn-primary w-25 mx-auto" value="Vote">
+  </div>
     </form>
+  
     {% else %}
     <div class="alert alert-success" role="alert">
         Your vote was submitted succesfully!
