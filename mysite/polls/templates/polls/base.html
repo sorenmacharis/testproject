@@ -32,6 +32,9 @@
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
         
+          <li class="nav-item">
+            <span class="nav-link">Welcome, <a href="{% url 'polls:profile' %}">{{ user.get_username }}</a></span>
+          </li>
         <li class="nav-item">
           <a class="nav-link" href="/accounts/logout">Logout</a>
         </li>

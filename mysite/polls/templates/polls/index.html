@@ -15,8 +15,9 @@
           <p class="card-text">{{ question.question_description }}</p>
           {% if user.is_authenticated %}
           <a href="{% url 'polls:detail' question.id %}" class="btn btn-primary">Vote!</a>
+          {% if perms.polls.view_question %}
           <a href="{% url 'polls:results' question.id %}" class="btn btn-warning">View Results</a>
-          
+          {% endif %}
           {% else %}
           <a class="btn btn-secondary" href="/accounts/login">Please login to vote</a>
           {% endif %}

@@ -1,0 +1,29 @@
+{% extends "polls/base.html" %}
+{% load static %}
+{% block content %}
+
+<h2 class="text-center">Profile</h2>
+<p></p>
+</article>
+
+
+  <div class="card mb-3 mx-auto" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="{% static 'polls/images/profile.png' %}" alt="profile" width="125">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Username:</h5>
+          <p class="card-text">{{ user.get_username }}</p>
+          <h5 class="card-title">Member status:</h5>
+          {% if perms.polls.view_question %}
+          <p class="card-text">Yes</small></p>
+          {% else %}
+          <p class="card-text">No</small></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
