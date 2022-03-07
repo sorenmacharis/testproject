@@ -3,14 +3,20 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 from django.contrib.auth.decorators import login_required, permission_required
-
+from .decorators import group_required
 from .models import Question, Choice
 
 # Create your views here.
 
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    context = {'latest_question_list': latest_question_list}
+    if request.user.groups.filter(name='member').exists():
+        ismember = True
+    else:
+        ismember = False
+
+    context = {'latest_question_list': latest_question_list,
+    'ismember': ismember}
     return render(request, 'polls/index.html', context)
 
 @login_required(login_url='/accounts/login/')
@@ -20,10 +26,18 @@ def detail(request, question_id):
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
-    return render(request, 'polls/profile.html')
+    
+    if request.user.groups.filter(name='member').exists():
+        ismember = True
+    else:
+        ismember = False
+    context = {'ismember' : ismember}
+    return render(request, 'polls/profile.html', context)
 
   
-@permission_required('polls.view_question', raise_exception=True)       
+#@permission_required('polls.view_question', raise_exception=True)   
+@login_required(login_url='/accounts/login/')
+@group_required('member')    
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/results.html', {'question': question})

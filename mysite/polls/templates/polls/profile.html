@@ -17,7 +17,7 @@
           <h5 class="card-title">Username:</h5>
           <p class="card-text">{{ user.get_username }}</p>
           <h5 class="card-title">Member status:</h5>
-          {% if perms.polls.view_question %}
+          {% if ismember %}
           <p class="card-text">Yes</small></p>
           {% else %}
           <p class="card-text">No</small></p>
