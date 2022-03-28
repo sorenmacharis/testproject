@@ -1,0 +1,35 @@
+<div>
+    <!-- put component code here -->
+    <h2 class="text-center">All available polls</h2>
+{% if latest_question_list  %}
+
+    {% for question in latest_question_list %}
+
+    
+    <div class="card text-center float-left w-25 mx-5 my-4">
+        
+        <div class="card-body">
+          
+          <h5 class="card-title">{{ question.question_text }}</h5>
+          <p class="card-text">{{ question.question_description }}</p>
+          {% if user.is_authenticated %}
+          <a href="{% url 'polls:detail' question.id %}" class="btn btn-primary">Vote!</a>
+          {% if ismember %}
+          <a href="{% url 'polls:results' question.id %}" class="btn btn-warning">View Results</a>
+          {% endif %}
+          {% else %}
+          <a class="btn btn-secondary" href="/accounts/login">Please login to vote</a>
+          {% endif %}
+        </div>
+        
+      </div>
+
+    {% endfor %}
+
+
+
+
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
+</div>

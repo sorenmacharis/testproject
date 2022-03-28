@@ -1,30 +1,9 @@
 {% extends "polls/base.html" %}
 
+{% load unicorn%}
+
 {% block content %}
-<h2 class="text-center">All available polls</h2>
-{% if latest_question_list  %}
 
-    {% for question in latest_question_list %}
-
-    
-    <div class="card text-center">
-        
-        <div class="card-body">
-          <h5 class="card-title">{{ question.question_text }}</h5>
-          <p class="card-text">{{ question.question_description }}</p>
-          <a href="{% url 'polls:detail' question.id %}" class="btn btn-primary">Go</a>
-          <a href="{% url 'polls:results' question.id %}" class="btn btn-warning">Details</a>
-        </div>
-        
-      </div>
-
-    {% endfor %}
-
-
-
-
-{% else %}
-<p>No polls are available.</p>
-{% endif %}
+{% unicorn 'pollsoverview' %}
 
 {% endblock %}
