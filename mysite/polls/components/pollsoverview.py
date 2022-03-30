@@ -11,3 +11,5 @@ class PollsoverviewView(UnicornView):
         self.latest_question_list = Question.objects.order_by('-pub_date')[:5]
         
 
+    class Meta:
+        javascript_exclude = ("latest_question_list",)

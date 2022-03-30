@@ -1,18 +1,7 @@
 {% extends "polls/base.html" %}
-
+{% load unicorn%}
 {% block content %}
 
-<h2 class="text-center">Results</h2>
-<div class="card text-center w-50 mx-auto">
-    <div class="card-header">
-        Poll Name: {{ question.question_text }}
-      </div>
-<ul class="list-group">
-{% for choice in question.choice_set.all %}
-    <li class="list-group-item">{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
+{% unicorn 'result' %}
 
-<a href="{% url 'polls:index' %}" class=" btn btn-primary w-25 mx-auto my-3">Go back to all polls</a>
-</div>
 {% endblock %}

@@ -1,4 +1,4 @@
-<div unicorn:poll>
+<div unicorn:poll-2000="get_updates">
     <!-- put component code here -->
     <footer class="page-footer font-small unique-color-dark">
 
@@ -16,7 +16,8 @@
               
               <h6 class="text-uppercase font-weight-bold">Number Of Polls</h6>
               <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-              <h1 id="numberofpolls">
+              <h1>
+                {{ nq }}
               </h1>
       
             </div>
@@ -28,8 +29,8 @@
               <!-- Links -->
               <h6 class="text-uppercase font-weight-bold">Total Votes</h6>
               <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-              <h1 id="numberofvotes"></h1>
-      
+              <h1>{{ nv }}</h1>
+              
             </div>
             
       
