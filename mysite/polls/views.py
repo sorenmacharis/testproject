@@ -9,7 +9,7 @@ from .models import Question, Choice
 # Create your views here.
 
 def index(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    latest_question_list = Question.objects.order_by('-pub_date')
     if request.user.groups.filter(name='member').exists():
         ismember = True
     else:

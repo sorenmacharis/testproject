@@ -113,7 +113,7 @@
 <script>
   $.ajax({
     type: 'GET',
-    url: 'https://sorenmacharis.eu.pythonanywhere.com/numberofpolls',
+    url: 'http://localhost:8000/numberofpolls',
     dataType: 'text',
     success: function(res){
               //answer of api call.
@@ -126,7 +126,7 @@
 
 $.ajax({
     type: 'GET',
-    url: 'https://sorenmacharis.eu.pythonanywhere.com/numberofvotes',
+    url: 'http://localhost:8000/numberofvotes',
     dataType: 'text',
     success: function(res){
               //answer of api call.
