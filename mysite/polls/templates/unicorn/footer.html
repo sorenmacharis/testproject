@@ -1,8 +1,8 @@
-<div unicorn:poll-2000="get_updates">
+<div>
     <!-- put component code here -->
     <footer class="page-footer font-small unique-color-dark">
 
-  
+      <button unicorn:click="get_updates">Update Footer</button>
 
         <!-- Footer Links -->
         <div class="container text-center text-md-left mt-5">
@@ -57,32 +57,5 @@
         </div>
       
       </footer>
-      <script>
-        $.ajax({
-          type: 'GET',
-          url: 'https://sorenmacharis.eu.pythonanywhere.com/numberofpolls',
-          dataType: 'text',
-          success: function(res){
-                    //answer of api call.
-                    $("#numberofpolls").html(res);
-                  },
-          error: function(error) {
-              $("#numberofpolls").html("0");
-          }
-      });
       
-      $.ajax({
-          type: 'GET',
-          url: 'https://sorenmacharis.eu.pythonanywhere.com/numberofvotes',
-          dataType: 'text',
-          success: function(res){
-                    //answer of api call.
-                    $("#numberofvotes").html(res);
-                  },
-          error: function(error) {
-              $("#numberofvotes").html("0");
-          }
-      });
-      
-      </script>
 </div>
