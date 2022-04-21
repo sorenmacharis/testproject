@@ -8,7 +8,7 @@ class PollsoverviewView(UnicornView):
 
 
     def mount(self):
-        self.latest_question_list = Question.objects.order_by('-pub_date')[:5]
+        self.latest_question_list = Question.objects.order_by('-pub_date')
         
 
     class Meta:
